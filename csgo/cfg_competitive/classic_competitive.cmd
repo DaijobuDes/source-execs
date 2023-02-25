@@ -1,0 +1,1 @@
+srcds -game csgo -console -usercon +game_type 0 +game_mode 1 +mapgroup mg_active +map awp_blocks -tickrate 128 +sv_mincmdrate 128 +sv_minupdaterate 128 +exec gotv -maxplayers_override 15 +sv_tags "competitive,custom,128tick" +tv_delay 1 +ip 0.0.0.0 -authkey <authkey>
