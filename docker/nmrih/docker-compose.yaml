@@ -1,0 +1,90 @@
+version: "3"
+
+services:
+  nmrih-vanilla-casual:
+    image: steamcmd:libcurses
+    user: steam
+    working_dir: /steam/nmrih
+    volumes:
+      - "./nmrih:/steam/nmrih"
+      - "./steam-query:/usr/bin/steam-query:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    ports:
+      - "27015:27015"
+    command: ./srcds_run -game nmrih -console -usercon -maxplayers 8
+    network_mode: host
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: ["CMD", "steam-query", "-d", "192.168.31.153", "-p", "27015"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  nmrih-vanilla-casual-2:
+    image: steamcmd:libcurses
+    user: steam
+    working_dir: /steam/nmrih
+    volumes:
+      - "./nmrih:/steam/nmrih"
+      - "./steam-query:/usr/bin/steam-query:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    ports:
+      - "27018:27018"
+    command: ./srcds_run -game nmrih -console -usercon -maxplayers 8 +exec casual-2.cfg
+    network_mode: host
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: ["CMD", "steam-query", "-d", "192.168.31.153", "-p", "27018"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  nmrih-mutators-casual:
+    image: steamcmd:libcurses
+    user: steam
+    working_dir: /steam/nmrih
+    volumes:
+      - "./nmrih:/steam/nmrih"
+      - "./steam-query:/usr/bin/steam-query:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    ports:
+      - "27016:27016"
+    command: ./srcds_run -game nmrih -console -usercon -maxplayers 8 +exec mutators.cfg
+    network_mode: host
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: ["CMD", "steam-query", "-d", "192.168.31.153", "-p", "27016"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  nmrih-vanilla-classic:
+    image: steamcmd:libcurses
+    user: steam
+    working_dir: /steam/nmrih
+    volumes:
+      - "./nmrih:/steam/nmrih"
+      - "./steam-query:/usr/bin/steam-query:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    ports:
+      - "27017:27017"
+    command: ./srcds_run -game nmrih -console -usercon -maxplayers 8 +exec classic.cfg
+    network_mode: host
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: ["CMD", "steam-query", "-d", "192.168.31.153", "-p", "27017"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+      start_period: 60s

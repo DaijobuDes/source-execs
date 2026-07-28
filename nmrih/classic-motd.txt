@@ -1,0 +1,13 @@
+Welcome to DaijobuDes' NMRIH Server
+
+Other servers:
+
+<this server ip>:27015 - Casual
+<this server ip>:27016 - Mutators Casual (Low health zombies)
+<this server ip>:27017 - Classic
+<this server ip>:27018 - Classic 2
+
+
+Current difficulty is set to classic. You only respawn at checkpoints.
+
+
